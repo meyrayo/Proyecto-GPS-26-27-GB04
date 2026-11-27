@@ -11,6 +11,7 @@ from app import create_app
 def app(tmp_path):
     return create_app({
         "TESTING": True,
+        "WTF_CSRF_ENABLED": False,
         "DATABASE": str(tmp_path / "pruebas.sqlite"),
     })
 

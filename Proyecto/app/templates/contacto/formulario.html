@@ -28,6 +28,7 @@
 
   {# US-14-AC-02: los cuatro campos son obligatorios #}
   <form class="formulario form-contacto" method="post" action="{{ url_for('contacto.contacto') }}" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="codigo" value="{{ codigo }}">
     <label for="nombre">Nombre <span class="ayuda">(obligatorio)</span></label>
     <input id="nombre" name="nombre" value="{{ datos.nombre or '' }}" maxlength="80" required autocomplete="off" {{ invalido('nombre') }}>

@@ -20,6 +20,7 @@
           {# US-10-AC-01: solo Moderador y Administrador ven «Retirar», con confirmación #}
           <form class="form-moderar form-retirar" method="post" action="{{ url_for('moderacion.retirar_tema', id_tema=tema.id) }}"
                 data-confirmar="¿Retirar el tema «{{ tema.titulo }}» y sus respuestas? Dejará de verlo todo el mundo.">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="boton-retirar" aria-label="Retirar el tema {{ tema.titulo }}">Retirar tema</button>
           </form>
         {% endif %}
@@ -41,6 +42,7 @@
                   <form class="form-moderar form-retirar" method="post"
                         action="{{ url_for('moderacion.retirar_respuesta', id_tema=tema.id, id_respuesta=r.id) }}"
                         data-confirmar="¿Retirar la respuesta de {{ r.autor }}? Dejará de verla todo el mundo.">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <button type="submit" class="boton-retirar" aria-label="Retirar la respuesta de {{ r.autor }}">Retirar</button>
                   </form>
                 {% endif %}
@@ -61,6 +63,7 @@
         <p class="aviso aviso-error" role="alert">{{ error_general }}</p>
       {% endif %}
       <form class="formulario form-respuesta" method="post" action="{{ url_for('foro.responder', id_tema=tema.id) }}" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <label for="cuerpo">Tu respuesta</label>
         <textarea id="cuerpo" name="cuerpo" rows="5" maxlength="5000" required
           {% if errores.cuerpo %}aria-invalid="true" aria-describedby="error-cuerpo"{% endif %}>{{ texto }}</textarea>

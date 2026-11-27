@@ -42,6 +42,7 @@
               <p class="evento-inscrito">Inscrito</p>
             {% elif not e.completo %}
               <form class="form-inscripcion" method="post" action="{{ url_for('eventos.inscribirse', id_evento=e.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="tipo" value="{{ tipo or '' }}">
                 <button type="submit" class="boton boton-inscribirse" aria-label="Inscribirse en {{ e.titulo }}">Inscribirse</button>
               </form>

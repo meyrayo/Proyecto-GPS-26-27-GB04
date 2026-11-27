@@ -30,6 +30,7 @@
             <td class="estado-{{ 'disponible' if p.disponible else 'agotado' }}">{{ p.estado }}</td>
             <td>
               <form class="form-stock" method="post" action="{{ url_for('admin_stock.cambiar_stock', id_producto=p.id) }}" novalidate>
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <label class="solo-lectores" for="stock-{{ p.id }}">Nuevo stock de {{ p.nombre }}</label>
                 <input id="stock-{{ p.id }}" name="stock" type="number" min="0" step="1" inputmode="numeric"
                        value="{{ intentos.get(p.id, p.stock) }}" required

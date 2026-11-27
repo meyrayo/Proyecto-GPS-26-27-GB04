@@ -43,12 +43,14 @@
             <td>
               <div class="cantidad">
                 <form method="post" action="{{ url_for('cesta.quitar', id_producto=l.id) }}">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                   <input type="hidden" name="cantidad" value="1">
                   <button type="submit" aria-label="Quitar una unidad de {{ l.nombre }}">−</button>
                 </form>
                 <span aria-label="Cantidad de {{ l.nombre }}">{{ l.cantidad }}</span>
                 {% if l.se_puede_comprar and l.cantidad < l.stock %}
                   <form method="post" action="{{ url_for('cesta.anadir', id_producto=l.id) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="cantidad" value="1">
                     <input type="hidden" name="volver" value="{{ url_for('cesta.ver_cesta') }}">
                     <button type="submit" aria-label="Añadir una unidad de {{ l.nombre }}">+</button>
@@ -59,6 +61,7 @@
             <td>{{ euros(l.subtotal) }}</td>
             <td>
               <form method="post" action="{{ url_for('cesta.quitar', id_producto=l.id) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <button type="submit" class="boton-quitar" aria-label="Quitar {{ l.nombre }} de la cesta">Quitar</button>
               </form>
             </td>

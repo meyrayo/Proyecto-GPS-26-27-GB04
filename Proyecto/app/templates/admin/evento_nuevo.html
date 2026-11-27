@@ -22,6 +22,7 @@
   {% endif %}
 
   <form class="formulario form-evento" method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label for="titulo">Título</label>
     <input id="titulo" name="titulo" value="{{ datos.titulo or '' }}" maxlength="120" required {{ invalido('titulo') }}>
     {{ campo_error('titulo') }}

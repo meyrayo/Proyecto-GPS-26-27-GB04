@@ -25,6 +25,7 @@
           </div>
           {# US-11-AC-03: al abrirla se marca como leída y se va a la ficha del evento #}
           <form class="form-abrir" method="post" action="{{ url_for('notificaciones.abrir', id_notificacion=a.id) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button type="submit" class="boton" aria-label="Ver el evento {{ a.titulo }}">Ver evento</button>
           </form>
         </li>
