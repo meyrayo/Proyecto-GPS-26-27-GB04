@@ -12,7 +12,7 @@ from app.repositories import incidencias_repo
 
 FORMATO = "%Y-%m-%d %H:%M:%S"
 # Email sintético: formato válido y dominio de prueba terminado en .test (regla de US-14)
-PATRON_EMAIL = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+PATRON_EMAIL = re.compile(r"^[^@\s]+@[^@\s.]+(?:\.[^@\s.]+)+$")
 DOMINIO_PRUEBA = ".test"
 LIMITES = {"nombre": 80, "email": 120, "asunto": 120, "mensaje": 2000}
 NOMBRES = {"nombre": "el nombre", "email": "el email", "asunto": "el asunto", "mensaje": "el mensaje"}
