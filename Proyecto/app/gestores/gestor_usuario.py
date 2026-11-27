@@ -11,7 +11,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.repositories import usuarios_repo
 
-PATRON_EMAIL = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+PATRON_EMAIL = re.compile(r"^[^@\s]+@[^@\s.]+(?:\.[^@\s.]+)+$")
 LONGITUD_MINIMA = 8
 
 
