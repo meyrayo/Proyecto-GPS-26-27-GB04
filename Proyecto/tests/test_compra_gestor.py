@@ -57,7 +57,9 @@ def test_un_metodo_de_pago_que_no_es_de_demostracion_no_se_acepta(app, metodo):
 
 
 def test_cada_checkout_tiene_un_codigo_distinto():
-    assert gestor_catalogo.nuevoCodigoCompra() != gestor_catalogo.nuevoCodigoCompra()
+    primer_codigo = gestor_catalogo.nuevoCodigoCompra()
+    segundo_codigo = gestor_catalogo.nuevoCodigoCompra()
+    assert primer_codigo != segundo_codigo
 
 
 # ---------- Compra correcta (AC-02, AC-03 y AC-05) ----------
