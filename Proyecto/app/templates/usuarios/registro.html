@@ -13,6 +13,7 @@
   {% endif %}
 
   <form class="formulario" method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label for="codigo_invitacion">Código de invitación</label>
     <input id="codigo_invitacion" name="codigo_invitacion" value="{{ datos.codigo_invitacion or '' }}" required autocomplete="off">
 

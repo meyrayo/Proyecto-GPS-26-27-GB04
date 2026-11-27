@@ -29,12 +29,14 @@
                 {# US-10-AC-02: bloquear pide confirmación #}
                 <form class="form-moderar" method="post" action="{{ url_for('moderacion.bloquear', id_usuario=c.id) }}"
                       data-confirmar="¿Bloquear la cuenta de {{ c.nombre_usuario }}? No podrá iniciar sesión ni participar.">
+                      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                   <button type="submit" class="boton-peligro" aria-label="Bloquear la cuenta de {{ c.nombre_usuario }}">Bloquear</button>
                 </form>
               {% elif c.estado == 'bloqueada' %}
                 {# US-10-AC-04 #}
                 <form class="form-moderar" method="post" action="{{ url_for('moderacion.desbloquear', id_usuario=c.id) }}"
                       data-confirmar="¿Desbloquear la cuenta de {{ c.nombre_usuario }}?">
+                      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                   <button type="submit" class="boton" aria-label="Desbloquear la cuenta de {{ c.nombre_usuario }}">Desbloquear</button>
                 </form>
               {% else %}

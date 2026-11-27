@@ -22,6 +22,7 @@
   {% endif %}
 
   <form class="formulario form-producto" method="post" novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label for="nombre">Nombre</label>
     <input id="nombre" name="nombre" value="{{ datos.nombre or '' }}" maxlength="100" required {{ invalido('nombre') }}>
     {{ campo_error('nombre') }}

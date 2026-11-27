@@ -27,6 +27,7 @@
       <p class="nota">Para inscribirte tienes que <a href="{{ url_for('usuarios.login') }}">iniciar sesión</a> con una cuenta verificada.</p>
     {% else %}
       <form class="form-inscripcion" method="post" action="{{ url_for('eventos.inscribirse', id_evento=e.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="volver" value="ficha">
         <button type="submit" class="boton boton-inscribirse">Inscribirse</button>
       </form>
